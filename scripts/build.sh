@@ -34,6 +34,22 @@ xcrun swift -module-cache-path "$CLANG_MODULE_CACHE_PATH" \
     "$root/scripts/make-icon.swift" "$root/Resources/AppIcon.png" "$stage/AppIcon.iconset"
 /usr/bin/iconutil -c icns "$stage/AppIcon.iconset" \
     -o "$staged_app/Contents/Resources/MXMasterDithered.icns"
+# Modern macOS wraps legacy transparent icons in a pale system tile. A native
+# catalog supplies the intended opaque purple background; older Xcode/macOS
+# versions retain the ICNS generated above.
+xcode_major="$(xcodebuild -version 2>/dev/null | awk '/^Xcode / { split($2, v, "."); print v[1]; exit }')" || xcode_major=0
+if [[ "$xcode_major" =~ ^[0-9]+$ ]] && (( xcode_major >= 26 )); then
+    cp -RL "$root/Resources/MXMasterDithered.icon" "$stage/MXMasterDithered.icon"
+    mkdir -p "$stage/catalog"
+    xcrun actool "$stage/MXMasterDithered.icon" --compile "$stage/catalog" \
+        --app-icon MXMasterDithered --include-all-app-icons --platform macosx \
+        --target-device mac --minimum-deployment-target 13.0 \
+        --output-partial-info-plist "$stage/catalog/icons.plist"
+    cp "$stage/catalog/Assets.car" "$stage/catalog/MXMasterDithered.icns" \
+        "$staged_app/Contents/Resources/"
+    /usr/libexec/PlistBuddy -c "Add :CFBundleIconName string MXMasterDithered" \
+        "$staged_app/Contents/Info.plist"
+fi
 /usr/bin/plutil -lint "$staged_app/Contents/Info.plist"
 
 # IOHID and CGEvent are used directly. No sandbox or restricted virtual-HID
