@@ -67,7 +67,7 @@ particularly the original `reprog_controls.rs`, `adjustable_dpi.rs`, and
 Rust/GPUI suite has been removed from the application tree.
 
 Code retains OpenLogi's MIT / Apache-2.0 licensing; see LICENSE-MIT and
-LICENSE-APACHE. The new app icon is drawn locally from original vector paths.
+LICENSE-APACHE. The app icon is a white/grey dithered version of the mouse render on near-black purple; its master image is bundled in Resources/AppIcon.png.
 OpenLogi's proprietary logo and icon are not included.
 
 ---

@@ -33,7 +33,7 @@ Undocumented Core Graphics gesture field numbers were verified against
 and [TouchEvents.c](https://github.com/Hammerspoon/hammerspoon/blob/master/extensions/eventtap/TouchEvents.c).
 The Swift state machine and event validation are implemented in this fork.
 
-The icon is new vector artwork drawn by `scripts/make-icon.swift`.
+The icon master (`Resources/AppIcon.png`) is a dithered transformation of the MX Master 3 product render, made with the built-in ImageGen tool. `scripts/make-icon.swift` packages the bundled master image at macOS icon sizes.
 OpenLogi's proprietary brand assets are not redistributed.
 
 `Resources/MXMaster3.png` is the Logitech MX Master 3 product render from the

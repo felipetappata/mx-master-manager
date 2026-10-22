@@ -31,9 +31,9 @@ cp "$root/LICENSE-MIT" "$root/LICENSE-APACHE" "$root/THIRD_PARTY_NOTICES.md" \
 printf 'APPL????' > "$staged_app/Contents/PkgInfo"
 
 xcrun swift -module-cache-path "$CLANG_MODULE_CACHE_PATH" \
-    "$root/scripts/make-icon.swift" "$stage/AppIcon.iconset"
+    "$root/scripts/make-icon.swift" "$root/Resources/AppIcon.png" "$stage/AppIcon.iconset"
 /usr/bin/iconutil -c icns "$stage/AppIcon.iconset" \
-    -o "$staged_app/Contents/Resources/AppIcon.icns"
+    -o "$staged_app/Contents/Resources/MXMasterDithered.icns"
 /usr/bin/plutil -lint "$staged_app/Contents/Info.plist"
 
 # IOHID and CGEvent are used directly. No sandbox or restricted virtual-HID

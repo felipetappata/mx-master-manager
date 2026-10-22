@@ -9,7 +9,7 @@
     <key>CFBundleExecutable</key>
     <string>MXMasterManager</string>
     <key>CFBundleIconFile</key>
-    <string>AppIcon</string>
+    <string>MXMasterDithered</string>
     <key>CFBundleIdentifier</key>
     <string>com.felipetappata.mx-master-manager</string>
     <key>CFBundleInfoDictionaryVersion</key>
@@ -21,7 +21,7 @@
     <key>CFBundleShortVersionString</key>
     <string>0.1.1</string>
     <key>CFBundleVersion</key>
-    <string>2</string>
+    <string>3</string>
     <key>LSApplicationCategoryType</key>
     <string>public.app-category.utilities</string>
     <key>LSMinimumSystemVersion</key>
