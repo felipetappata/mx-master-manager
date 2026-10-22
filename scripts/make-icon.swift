@@ -30,8 +30,14 @@ do {
             NSGraphicsContext.saveGraphicsState()
             NSGraphicsContext.current = context
             context.cgContext.clear(CGRect(x: 0, y: 0, width: pixels, height: pixels))
-            context.imageInterpolation = .high
-            let inset = CGFloat(pixels) * 44 / 1024
+            context.imageInterpolation = .none
+            let inset = (CGFloat(pixels) * 68 / 1024).rounded()
+            let tile = NSRect(x: inset, y: inset,
+                              width: CGFloat(pixels) - inset * 2,
+                              height: CGFloat(pixels) - inset * 2)
+            NSBezierPath(roundedRect: tile,
+                         xRadius: CGFloat(pixels) * 198 / 1024,
+                         yRadius: CGFloat(pixels) * 198 / 1024).addClip()
             image.draw(in: NSRect(x: inset, y: inset,
                                  width: CGFloat(pixels) - inset * 2,
                                  height: CGFloat(pixels) - inset * 2),

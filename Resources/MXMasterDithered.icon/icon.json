@@ -28,7 +28,7 @@
           "glass": false,
           "opacity": 1.0,
           "position": {
-            "scale": 0.8,
+            "scale": 1.0,
             "translation-in-points": [
               0,
               0

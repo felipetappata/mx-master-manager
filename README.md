@@ -67,7 +67,7 @@ particularly the original `reprog_controls.rs`, `adjustable_dpi.rs`, and
 Rust/GPUI suite has been removed from the application tree.
 
 Code retains OpenLogi's MIT / Apache-2.0 licensing; see LICENSE-MIT and
-LICENSE-APACHE. The app icon is a white/grey dithered version of the mouse render on near-black purple; its master image is bundled in Resources/AppIcon.png.
+LICENSE-APACHE. The app icon is a deterministic 128-pixel Bayer dither of the original mouse render, enlarged with nearest-neighbor sampling. It uses only white, grey, and near-black purple. Regenerate the bundled master with `python3 scripts/dither-icon.py Resources/MXMaster3.png Resources/AppIcon.png` (requires Pillow).
 OpenLogi's proprietary logo and icon are not included.
 
 ---
